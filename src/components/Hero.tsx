@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { 
   Snowflake, 
@@ -8,13 +8,13 @@ import {
   Star, 
   CheckCircle2, 
   ArrowRight, 
-  Wrench,
   Sparkles,
   Zap,
-  BadgeCheck
+  BadgeCheck,
+  MapPin,
+  Navigation
 } from 'lucide-react';
 import { ApplianceType } from '../types';
-import { BRANDS } from '../data/servicesData';
 import heroTechnicianImg from '../assets/images/ac_technician_hero_1790081996299.jpg';
 import topBannerBgImg from '../assets/images/top_banner_bg_visible_1790082616249.jpg';
 
@@ -23,38 +23,7 @@ interface HeroProps {
   onExploreServices: (appliance: ApplianceType) => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onQuickBook, onExploreServices }) => {
-  const [selectedAppliance, setSelectedAppliance] = useState<ApplianceType>('ac');
-  const [selectedBrand, setSelectedBrand] = useState('LG');
-  const [selectedIssue, setSelectedIssue] = useState('ac-foam-jet-service');
-
-  const acIssues = [
-    { id: 'ac-foam-jet-service', label: 'Deep Foam Jet Wash (₹599)' },
-    { id: 'ac-gas-charging', label: 'Gas Leak & Refill (₹1,850)' },
-    { id: 'ac-not-cooling-repair', label: 'Not Cooling / Warm Air (₹349)' },
-    { id: 'ac-water-leakage', label: 'Water Leaking on Wall (₹399)' }
-  ];
-
-  const wmIssues = [
-    { id: 'wm-deep-cleaning-descaling', label: 'Tub Descaling & Wash (₹649)' },
-    { id: 'wm-spin-drain-issue', label: 'Not Draining / OE Error (₹399)' },
-    { id: 'wm-noise-drum-bearing', label: 'Violent Vibration / Noise (₹850)' },
-    { id: 'wm-water-inlet-leak', label: 'Water Not Filling / 4E (₹349)' }
-  ];
-
-  const currentIssues = selectedAppliance === 'ac' ? acIssues : wmIssues;
-
-  const handleApplianceToggle = (appliance: ApplianceType) => {
-    setSelectedAppliance(appliance);
-    setSelectedBrand(BRANDS[appliance][0]);
-    setSelectedIssue(appliance === 'ac' ? 'ac-foam-jet-service' : 'wm-deep-cleaning-descaling');
-  };
-
-  const handleQuickBookSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onQuickBook(selectedAppliance, selectedIssue, selectedBrand);
-  };
-
+export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
   return (
     <section id="hero" className="relative pt-8 pb-16 overflow-hidden min-h-[640px] flex items-center">
       {/* AI Generated Top Banner Background - Fully Visible & Vibrant */}
@@ -242,96 +211,40 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook, onExploreServices }) =>
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Instant Booking Card */}
+          {/* Right Column: Find Us on the Map */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="lg:col-span-5"
           >
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-xl p-5 sm:p-7 relative">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
-                <div>
-                  <h3 className="font-bold text-slate-900 text-lg">Instant Service Booking</h3>
-                  <p className="text-xs text-slate-500">Pick issue &amp; reserve technician in 60 seconds</p>
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden relative">
+              <div className="flex items-center justify-between border-b border-slate-100 p-5 sm:p-7 pb-4">
+                <div className="flex items-center space-x-2">
+                  <MapPin className="w-4 h-4 text-teal-600 shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-lg">Find Us on the Map</h3>
+                    <p className="text-xs text-slate-500">Visit our doorstep service hub</p>
+                  </div>
                 </div>
                 <span className="inline-flex items-center px-2 py-1 rounded-md text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  <CheckCircle2 className="w-3 h-3 mr-1" /> Slots Today
+                  <CheckCircle2 className="w-3 h-3 mr-1" /> Open Now
                 </span>
               </div>
 
-              {/* Appliance selector tabs */}
-              <div className="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl mb-4">
-                <button
-                  type="button"
-                  onClick={() => handleApplianceToggle('ac')}
-                  className={`flex items-center justify-center space-x-2 py-2.5 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedAppliance === 'ac'
-                      ? 'bg-white text-teal-700 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <motion.span
-                    animate={selectedAppliance === 'ac' ? { rotate: [0, -15, 15, 0] } : {}}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <Snowflake className="w-4 h-4 text-teal-600" />
-                  </motion.span>
-                  <span>Air Conditioner</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleApplianceToggle('washing_machine')}
-                  className={`flex items-center justify-center space-x-2 py-2.5 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedAppliance === 'washing_machine'
-                      ? 'bg-white text-cyan-700 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <motion.span
-                    animate={selectedAppliance === 'washing_machine' ? { rotate: 360 } : {}}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                  >
-                    <RotateCw className="w-4 h-4 text-cyan-600" />
-                  </motion.span>
-                  <span>Washing Machine</span>
-                </button>
+              <div className="h-64 sm:h-72 w-full">
+                <iframe
+                  title="CoolClean Repair Hub - Service Center Location"
+                  src="https://maps.google.com/maps?q=Central%20Electronics%20%26%20Appliance%20Market%2C%20Sector%2018%2C%20Near%20Metro%20Pillar%20421&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
 
-              <form onSubmit={handleQuickBookSubmit} className="space-y-4">
-                {/* Brand selection */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Select Appliance Brand
-                  </label>
-                  <select
-                    value={selectedBrand}
-                    onChange={(e) => setSelectedBrand(e.target.value)}
-                    className="w-full text-sm bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-800 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                  >
-                    {BRANDS[selectedAppliance].map((brand) => (
-                      <option key={brand} value={brand}>{brand}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Common Service / Issue */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Service Required / Problem
-                  </label>
-                  <select
-                    value={selectedIssue}
-                    onChange={(e) => setSelectedIssue(e.target.value)}
-                    className="w-full text-sm bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-800 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                  >
-                    {currentIssues.map((issue) => (
-                      <option key={issue.id} value={issue.id}>{issue.label}</option>
-                    ))}
-                  </select>
-                </div>
-
+              <div className="p-5 sm:p-7 pt-4 space-y-3">
                 {/* Special assurance note */}
                 <div className="bg-teal-50/70 border border-teal-100 rounded-lg p-3 text-xs text-teal-800 space-y-1">
                   <div className="flex items-center font-semibold">
@@ -343,21 +256,19 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook, onExploreServices }) =>
                   </p>
                 </div>
 
-                {/* CTA Submit Button */}
-                <motion.button
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  id="hero-quick-book-btn"
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Central+Electronics+%26+Appliance+Market%2C+Sector+18%2C+Near+Metro+Pillar+421"
+                  target="_blank"
+                  rel="noreferrer"
                   className="w-full py-3 px-4 bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm rounded-xl shadow-md shadow-teal-600/20 hover:shadow-lg transition-all flex items-center justify-center space-x-2 cursor-pointer"
                 >
-                  <Wrench className="w-4 h-4" />
-                  <span>Book Appointment Online</span>
+                  <Navigation className="w-4 h-4" />
+                  <span>Get Directions</span>
                   <ArrowRight className="w-4 h-4 ml-1" />
-                </motion.button>
-              </form>
+                </a>
+              </div>
 
-              <div className="mt-3 text-center">
+              <div className="pb-4 text-center">
                 <span className="text-[11px] text-slate-500">
                   ⚡ Urgent breakdown? Call emergency line:{' '}
                   <a href="tel:+919876500123" className="font-semibold text-teal-700 hover:underline">
