@@ -34,7 +34,7 @@ export const SERVICES: ServiceItem[] = [
     startingPrice: 599,
     popular: true,
     warranty: '30-Day Service Guarantee',
-    imageUrl: '/images/ac-service.jpg',
+    imageUrl: acFoamJetImg,
     features: [
       'Indoor & Outdoor deep pressure jet wash',
       'Anti-fungal & deodorizing foam treatment',
@@ -53,7 +53,7 @@ export const SERVICES: ServiceItem[] = [
     startingPrice: 1850,
     popular: true,
     warranty: '90-Day Gas & Leakage Warranty',
-    imageUrl: '/images/genuine-parts.jpg',
+    imageUrl: genuinePartsImg,
     features: [
       'Electronic & soap bubble leak diagnosis',
       'Copper tube brazing & flare tightening',
@@ -146,7 +146,7 @@ export const SERVICES: ServiceItem[] = [
     startingPrice: 649,
     popular: true,
     warranty: '30-Day Freshness Guarantee',
-    imageUrl: '/images/washing-machine-repair.jpg',
+    imageUrl: washingMachineRepairImg,
     features: [
       'Removes stubborn calcium limescale & sludge',
       'Eliminates foul mildew odors & bacteria',
@@ -183,7 +183,7 @@ export const SERVICES: ServiceItem[] = [
     startingPrice: 850,
     popular: false,
     warranty: '180-Day Mechanical Warranty',
-    imageUrl: '/images/washing-machine-repair.jpg',
+    imageUrl: washingMachineRepairImg,
     features: [
       'High-grade SKF waterproof sealed bearings',
       'Shock absorbers & suspension strut replacement',
