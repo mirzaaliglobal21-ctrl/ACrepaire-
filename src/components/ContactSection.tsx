@@ -169,6 +169,36 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
+            {/* Google Map - Shop Location */}
+            <div className="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+              <div className="p-4 pb-0 flex items-center space-x-2 text-xs">
+                <MapPin className="w-4 h-4 text-teal-600 shrink-0" />
+                <span className="font-bold text-slate-800">Find Us on the Map</span>
+              </div>
+              <div className="mt-3 h-56 sm:h-64 w-full">
+                <iframe
+                  title="CoolClean Repair Hub - Service Center Location"
+                  src="https://maps.google.com/maps?q=Central%20Electronics%20%26%20Appliance%20Market%2C%20Sector%2018%2C%20Near%20Metro%20Pillar%20421&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="grayscale-[15%]"
+                />
+              </div>
+              <div className="p-4 pt-3 flex justify-end">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Central+Electronics+%26+Appliance+Market%2C+Sector+18%2C+Near+Metro+Pillar+421"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[11px] font-semibold text-teal-700 hover:underline"
+                >
+                  Get Directions →
+                </a>
+              </div>
+            </div>
+
             {/* Service Guarantee Banner */}
             <div className="flex items-center space-x-3 p-4 bg-teal-50 border border-teal-200 rounded-xl text-teal-900 text-xs">
               <ShieldCheck className="w-5 h-5 text-teal-600 shrink-0" />
