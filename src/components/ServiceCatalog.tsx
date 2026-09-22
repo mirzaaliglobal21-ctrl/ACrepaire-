@@ -36,7 +36,7 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
 
   // Icon mapping
   const renderIcon = (iconName: string) => {
-    const props = { className: "w-5 h-5 text-teal-600" };
+    const props = { className: "w-5 h-5 text-teal-400" };
     switch (iconName) {
       case 'Wind': return <Wind {...props} />;
       case 'Gauge': return <Gauge {...props} />;
@@ -74,26 +74,26 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
   ];
 
   return (
-    <section id="services" className="py-16 bg-white border-t border-slate-200">
+    <section id="services" className="py-16 bg-slate-950 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center space-x-1.5 bg-teal-50 border border-teal-200 text-teal-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">
-            <Wrench className="w-3.5 h-3.5 text-teal-600" />
+          <div className="inline-flex items-center space-x-1.5 bg-teal-900/40 border border-teal-800 text-teal-300 text-xs font-semibold px-3 py-1 rounded-full mb-3">
+            <Wrench className="w-3.5 h-3.5 text-teal-400" />
             <span>Certified Diagnostic & Repair Catalog</span>
           </div>
-          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
             Complete AC & Washing Machine Services
           </h2>
-          <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed">
             All services include doorstep inspection, genuine replacement parts, dedicated testing, and 90-day warranty.
           </p>
         </div>
 
         {/* Appliance Filter Switcher */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
-          <div className="inline-flex p-1 bg-slate-100 rounded-xl w-full sm:w-auto">
+          <div className="inline-flex p-1 bg-slate-800 rounded-xl w-full sm:w-auto">
             <button
               onClick={() => {
                 setApplianceFilter('all');
@@ -101,8 +101,8 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
               }}
               className={`flex-1 sm:flex-initial px-5 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                 applianceFilter === 'all'
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
               All Services ({SERVICES.length})
@@ -114,11 +114,11 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
               }}
               className={`flex-1 sm:flex-initial inline-flex items-center justify-center space-x-1.5 px-5 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                 applianceFilter === 'ac'
-                  ? 'bg-white text-teal-700 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-slate-900 text-teal-300 shadow-xs'
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
-              <Snowflake className="w-3.5 h-3.5 text-teal-600" />
+              <Snowflake className="w-3.5 h-3.5 text-teal-400" />
               <span>Air Conditioner</span>
             </button>
             <button
@@ -128,11 +128,11 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
               }}
               className={`flex-1 sm:flex-initial inline-flex items-center justify-center space-x-1.5 px-5 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                 applianceFilter === 'washing_machine'
-                  ? 'bg-white text-cyan-700 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-slate-900 text-cyan-300 shadow-xs'
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
-              <RotateCw className="w-3.5 h-3.5 text-cyan-600" />
+              <RotateCw className="w-3.5 h-3.5 text-cyan-400" />
               <span>Washing Machine</span>
             </button>
           </div>
@@ -146,7 +146,7 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
                 className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors capitalize cursor-pointer ${
                   selectedCategory === cat
                     ? 'bg-teal-600 text-white'
-                    : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200'
+                    : 'bg-slate-800/60 text-slate-400 hover:bg-slate-800 border border-slate-800'
                 }`}
               >
                 {cat === 'all' ? 'All Categories' : cat}
@@ -167,7 +167,7 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
                 exit={{ opacity: 0, scale: 0.94, transition: { duration: 0.2 } }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 transition={{ duration: 0.3 }}
-                className="bg-white rounded-2xl border border-slate-200 hover:border-teal-300 transition-colors p-5 flex flex-col justify-between hover:shadow-lg relative group"
+                className="bg-slate-900 rounded-2xl border border-slate-800 hover:border-teal-300 transition-colors p-5 flex flex-col justify-between hover:shadow-lg relative group"
               >
                 {service.popular && (
                   <span className="absolute top-4 right-4 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs z-10">
@@ -177,7 +177,7 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
 
                 <div>
                   {service.imageUrl && (
-                    <div className="mb-3.5 rounded-xl overflow-hidden h-36 bg-slate-100 relative border border-slate-100">
+                    <div className="mb-3.5 rounded-xl overflow-hidden h-36 bg-slate-800 relative border border-slate-800">
                       <img 
                         src={service.imageUrl} 
                         alt={service.name}
@@ -189,7 +189,7 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
 
                   {/* Header Icon + Category */}
                   <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-teal-900/40 border border-teal-100 flex items-center justify-center shrink-0">
                       {renderIcon(service.iconName)}
                     </div>
                     <div>
@@ -197,26 +197,26 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
                         {service.category}
                       </span>
                       <span className="mx-1 text-slate-300">•</span>
-                      <span className="text-[11px] font-medium text-teal-700">
+                      <span className="text-[11px] font-medium text-teal-300">
                         {service.appliance === 'ac' ? 'Air Conditioner' : 'Washing Machine'}
                       </span>
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-bold text-slate-900 text-base mb-2 group-hover:text-teal-700 transition-colors">
+                  <h3 className="font-bold text-white text-base mb-2 group-hover:text-teal-300 transition-colors">
                     {service.name}
                   </h3>
 
-                  <p className="text-xs text-slate-600 mb-4 line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-slate-400 mb-4 line-clamp-2 leading-relaxed">
                     {service.description}
                   </p>
 
                   {/* Features checklist */}
-                  <div className="space-y-1.5 mb-5 border-t border-slate-100 pt-3">
+                  <div className="space-y-1.5 mb-5 border-t border-slate-800 pt-3">
                     {service.features.map((feat, i) => (
-                      <div key={i} className="flex items-start text-xs text-slate-700 space-x-2">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
+                      <div key={i} className="flex items-start text-xs text-slate-300 space-x-2">
+                        <Check className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -224,13 +224,13 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
                 </div>
 
                 {/* Price & Actions */}
-                <div className="border-t border-slate-100 pt-4 mt-auto">
+                <div className="border-t border-slate-800 pt-4 mt-auto">
                   <div className="flex items-center justify-between mb-3 text-xs">
                     <div className="flex items-center text-slate-500">
                       <Clock className="w-3.5 h-3.5 mr-1 text-slate-400" />
                       <span>{service.duration}</span>
                     </div>
-                    <div className="flex items-center text-teal-700 font-medium">
+                    <div className="flex items-center text-teal-300 font-medium">
                       <ShieldCheck className="w-3.5 h-3.5 mr-1" />
                       <span>{service.warranty}</span>
                     </div>
@@ -239,13 +239,13 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <span className="text-[10px] text-slate-400 block font-medium">Starting from</span>
-                      <span className="text-xl font-extrabold text-slate-900">₹{service.startingPrice}</span>
+                      <span className="text-xl font-extrabold text-white">₹{service.startingPrice}</span>
                     </div>
 
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => setDetailModalService(service)}
-                        className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                        className="p-2 text-slate-500 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-colors cursor-pointer"
                         title="View Scope Details"
                       >
                         <Info className="w-4 h-4" />
@@ -280,17 +280,17 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 10 }}
                 transition={{ duration: 0.2 }}
-                className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative"
+                className="bg-slate-900 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative"
               >
                 <button
                   onClick={() => setDetailModalService(null)}
-                  className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors z-10"
+                  className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-300 hover:bg-slate-800 transition-colors z-10"
                 >
                   <X className="w-5 h-5" />
                 </button>
 
                 {detailModalService.imageUrl && (
-                  <div className="mb-4 rounded-xl overflow-hidden h-44 bg-slate-100 relative border border-slate-200">
+                  <div className="mb-4 rounded-xl overflow-hidden h-44 bg-slate-800 relative border border-slate-800">
                     <img 
                       src={detailModalService.imageUrl} 
                       alt={detailModalService.name}
@@ -301,31 +301,31 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
                 )}
 
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-teal-900/40 border border-teal-100 flex items-center justify-center">
                     {renderIcon(detailModalService.iconName)}
                   </div>
                   <div>
-                    <span className="text-xs font-semibold text-teal-700 uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-teal-300 uppercase tracking-wider">
                       {detailModalService.appliance === 'ac' ? 'Air Conditioner' : 'Washing Machine'}
                     </span>
-                    <h3 className="text-lg font-bold text-slate-900">
+                    <h3 className="text-lg font-bold text-white">
                       {detailModalService.name}
                     </h3>
                   </div>
                 </div>
 
-                <p className="text-sm text-slate-600 mb-4 leading-relaxed">
+                <p className="text-sm text-slate-400 mb-4 leading-relaxed">
                   {detailModalService.description}
                 </p>
 
-                <div className="bg-slate-50 rounded-xl p-4 mb-4 border border-slate-200">
-                  <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
+                <div className="bg-slate-800/60 rounded-xl p-4 mb-4 border border-slate-800">
+                  <h4 className="text-xs font-bold text-slate-100 uppercase tracking-wider mb-2">
                     What is included in this service:
                   </h4>
                   <div className="space-y-2">
                     {detailModalService.features.map((feat, idx) => (
-                      <div key={idx} className="flex items-start text-xs text-slate-700 space-x-2">
-                        <Check className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
+                      <div key={idx} className="flex items-start text-xs text-slate-300 space-x-2">
+                        <Check className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -333,20 +333,20 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 mb-6 text-xs">
-                  <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                  <div className="p-3 bg-slate-800/60 rounded-lg border border-slate-800">
                     <span className="text-slate-500 block mb-0.5">Estimated Duration</span>
-                    <span className="font-bold text-slate-800">{detailModalService.duration}</span>
+                    <span className="font-bold text-slate-100">{detailModalService.duration}</span>
                   </div>
-                  <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                  <div className="p-3 bg-slate-800/60 rounded-lg border border-slate-800">
                     <span className="text-slate-500 block mb-0.5">Service Warranty</span>
-                    <span className="font-bold text-teal-700">{detailModalService.warranty}</span>
+                    <span className="font-bold text-teal-300">{detailModalService.warranty}</span>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-2 border-t border-slate-100">
+                <div className="flex items-center justify-between pt-2 border-t border-slate-800">
                   <div>
                     <span className="text-xs text-slate-400 block font-medium">Standard Price</span>
-                    <span className="text-2xl font-black text-slate-900">₹{detailModalService.startingPrice}</span>
+                    <span className="text-2xl font-black text-white">₹{detailModalService.startingPrice}</span>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.02 }}

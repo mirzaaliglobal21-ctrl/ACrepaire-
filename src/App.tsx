@@ -82,7 +82,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-teal-500 selection:text-white flex flex-col">
+    <div className="min-h-screen bg-slate-900 text-white font-sans selection:bg-teal-500 selection:text-white flex flex-col">
       {/* Top Sticky Navigation */}
       <Navbar
         onOpenBooking={() => handleOpenBooking('ac')}

@@ -61,19 +61,19 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-16 bg-white border-t border-slate-200">
+    <section id="contact" className="py-16 bg-slate-950 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center space-x-1.5 bg-teal-50 border border-teal-200 text-teal-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">
-            <Phone className="w-3.5 h-3.5 text-teal-600" />
+          <div className="inline-flex items-center space-x-1.5 bg-teal-900/40 border border-teal-800 text-teal-300 text-xs font-semibold px-3 py-1 rounded-full mb-3">
+            <Phone className="w-3.5 h-3.5 text-teal-400" />
             <span>24/7 Helpline & Doorstep Assistance</span>
           </div>
-          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
             Contact Our Service Hub
           </h2>
-          <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed">
             Have a question, need an urgent breakdown technician, or want an AMC quote? Reach out below or message us on WhatsApp for immediate response.
           </p>
         </div>
@@ -128,41 +128,41 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Shop Details */}
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-4 text-xs">
+            <div className="bg-slate-800/60 rounded-2xl p-6 border border-slate-800 space-y-4 text-xs">
               <div className="flex items-start space-x-3">
-                <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-teal-600 shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-teal-400 shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="font-bold text-slate-800 block text-xs">Main Workshop & Service Center</span>
-                  <span className="text-slate-600">
+                  <span className="font-bold text-slate-100 block text-xs">Main Workshop & Service Center</span>
+                  <span className="text-slate-400">
                     Shop #14, Central Electronics & Appliance Market, Sector 18 (Near Metro Pillar 421)
                   </span>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
-                <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-teal-600 shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-teal-400 shrink-0">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="font-bold text-slate-800 block text-xs">Operating Hours</span>
-                  <span className="text-slate-600">
+                  <span className="font-bold text-slate-100 block text-xs">Operating Hours</span>
+                  <span className="text-slate-400">
                     Monday - Sunday: 8:00 AM - 9:00 PM (Doorstep Service)
                   </span>
-                  <span className="block text-[11px] text-teal-700 font-medium mt-0.5">
+                  <span className="block text-[11px] text-teal-300 font-medium mt-0.5">
                     *24/7 on-call emergency repairs available
                   </span>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
-                <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-teal-600 shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-teal-400 shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="font-bold text-slate-800 block text-xs">Customer Support Email</span>
-                  <a href="mailto:support@coolcleanrepairs.com" className="text-teal-700 hover:underline">
+                  <span className="font-bold text-slate-100 block text-xs">Customer Support Email</span>
+                  <a href="mailto:support@coolcleanrepairs.com" className="text-teal-300 hover:underline">
                     support@coolcleanrepairs.com
                   </a>
                 </div>
@@ -170,10 +170,10 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Google Map - Shop Location */}
-            <div className="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+            <div className="bg-slate-800/60 rounded-2xl border border-slate-800 overflow-hidden">
               <div className="p-4 pb-0 flex items-center space-x-2 text-xs">
-                <MapPin className="w-4 h-4 text-teal-600 shrink-0" />
-                <span className="font-bold text-slate-800">Find Us on the Map</span>
+                <MapPin className="w-4 h-4 text-teal-400 shrink-0" />
+                <span className="font-bold text-slate-100">Find Us on the Map</span>
               </div>
               <div className="mt-3 h-56 sm:h-64 w-full">
                 <iframe
@@ -192,7 +192,7 @@ export const ContactSection: React.FC = () => {
                   href="https://www.google.com/maps/search/?api=1&query=Central+Electronics+%26+Appliance+Market%2C+Sector+18%2C+Near+Metro+Pillar+421"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-[11px] font-semibold text-teal-700 hover:underline"
+                  className="text-[11px] font-semibold text-teal-300 hover:underline"
                 >
                   Get Directions →
                 </a>
@@ -200,8 +200,8 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Service Guarantee Banner */}
-            <div className="flex items-center space-x-3 p-4 bg-teal-50 border border-teal-200 rounded-xl text-teal-900 text-xs">
-              <ShieldCheck className="w-5 h-5 text-teal-600 shrink-0" />
+            <div className="flex items-center space-x-3 p-4 bg-teal-900/40 border border-teal-800 rounded-xl text-teal-900 text-xs">
+              <ShieldCheck className="w-5 h-5 text-teal-400 shrink-0" />
               <span>
                 <strong>100% Satisfaction Guarantee:</strong> If our repair fails within 90 days, we fix it again free of charge with zero hassle.
               </span>
@@ -211,8 +211,8 @@ export const ContactSection: React.FC = () => {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-1">
+            <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-sm">
+              <h3 className="text-xl font-bold text-white mb-1">
                 Send Us a Service Inquiry
               </h3>
               <p className="text-xs text-slate-500 mb-6">
@@ -227,15 +227,15 @@ export const ContactSection: React.FC = () => {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95, y: -10 }}
                     transition={{ duration: 0.25 }}
-                    className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 text-center space-y-3"
+                    className="bg-emerald-900/40 border border-emerald-800 rounded-xl p-6 text-center space-y-3"
                   >
-                    <div className="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto">
+                    <div className="w-12 h-12 bg-emerald-900/50 text-emerald-300 rounded-full flex items-center justify-center mx-auto">
                       <CheckCircle2 className="w-6 h-6" />
                     </div>
                     <h4 className="text-base font-bold text-emerald-900">
                       Message Sent Successfully!
                     </h4>
-                    <p className="text-xs text-emerald-700 max-w-sm mx-auto">
+                    <p className="text-xs text-emerald-300 max-w-sm mx-auto">
                       Thank you for reaching out. Our service executive will call your mobile number shortly to answer your inquiry or dispatch an engineer.
                     </p>
                     <button
@@ -255,7 +255,7 @@ export const ContactSection: React.FC = () => {
                     className="space-y-4"
                   >
                   {formError && (
-                    <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-xs text-red-700 flex items-center space-x-2">
+                    <div className="p-3 bg-red-900/40 border border-red-800 rounded-lg text-xs text-red-300 flex items-center space-x-2">
                       <AlertTriangle className="w-4 h-4 shrink-0 text-red-500" />
                       <span>{formError}</span>
                     </div>
@@ -263,7 +263,7 @@ export const ContactSection: React.FC = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      <label className="block text-xs font-semibold text-slate-300 mb-1">
                         Your Full Name *
                       </label>
                       <input
@@ -271,12 +271,12 @@ export const ContactSection: React.FC = () => {
                         placeholder="e.g. Ankit Sharma"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full text-xs p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-800 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-teal-500"
+                        className="w-full text-xs p-2.5 bg-slate-800/60 border border-slate-700 rounded-lg text-slate-100 focus:bg-slate-900 focus:outline-hidden focus:ring-2 focus:ring-teal-500"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      <label className="block text-xs font-semibold text-slate-300 mb-1">
                         Contact Phone Number *
                       </label>
                       <input
@@ -284,14 +284,14 @@ export const ContactSection: React.FC = () => {
                         placeholder="+91 98765 43210"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className="w-full text-xs p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-800 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-teal-500"
+                        className="w-full text-xs p-2.5 bg-slate-800/60 border border-slate-700 rounded-lg text-slate-100 focus:bg-slate-900 focus:outline-hidden focus:ring-2 focus:ring-teal-500"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      <label className="block text-xs font-semibold text-slate-300 mb-1">
                         Email Address (Optional)
                       </label>
                       <input
@@ -299,18 +299,18 @@ export const ContactSection: React.FC = () => {
                         placeholder="name@example.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full text-xs p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-800 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-teal-500"
+                        className="w-full text-xs p-2.5 bg-slate-800/60 border border-slate-700 rounded-lg text-slate-100 focus:bg-slate-900 focus:outline-hidden focus:ring-2 focus:ring-teal-500"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      <label className="block text-xs font-semibold text-slate-300 mb-1">
                         Appliance Category
                       </label>
                       <select
                         value={appliance}
                         onChange={(e) => setAppliance(e.target.value as ApplianceType | 'both')}
-                        className="w-full text-xs p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-800 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-teal-500"
+                        className="w-full text-xs p-2.5 bg-slate-800/60 border border-slate-700 rounded-lg text-slate-100 focus:bg-slate-900 focus:outline-hidden focus:ring-2 focus:ring-teal-500"
                       >
                         <option value="ac">Air Conditioner (AC)</option>
                         <option value="washing_machine">Washing Machine</option>
@@ -320,13 +320,13 @@ export const ContactSection: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs font-semibold text-slate-300 mb-1">
                       Inquiry Type
                     </label>
                     <select
                       value={inquiryType}
                       onChange={(e) => setInquiryType(e.target.value)}
-                      className="w-full text-xs p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-800 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-teal-500"
+                      className="w-full text-xs p-2.5 bg-slate-800/60 border border-slate-700 rounded-lg text-slate-100 focus:bg-slate-900 focus:outline-hidden focus:ring-2 focus:ring-teal-500"
                     >
                       <option value="Service Request">Book Technician / Service Request</option>
                       <option value="Emergency Breakdown">Urgent Emergency Breakdown (Under 1 Hour)</option>
@@ -337,7 +337,7 @@ export const ContactSection: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs font-semibold text-slate-300 mb-1">
                       Message / Problem Description *
                     </label>
                     <textarea
@@ -345,7 +345,7 @@ export const ContactSection: React.FC = () => {
                       placeholder="Please specify brand (LG, Samsung, Daikin, etc.), observed problem, error code, or any question..."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="w-full text-xs p-3 bg-slate-50 border border-slate-300 rounded-lg text-slate-800 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-teal-500"
+                      className="w-full text-xs p-3 bg-slate-800/60 border border-slate-700 rounded-lg text-slate-100 focus:bg-slate-900 focus:outline-hidden focus:ring-2 focus:ring-teal-500"
                     />
                   </div>
 
@@ -376,9 +376,9 @@ export const ContactSection: React.FC = () => {
         </div>
 
         {/* FAQs Accordion */}
-        <div id="faqs" className="mt-20 pt-12 border-t border-slate-200">
+        <div id="faqs" className="mt-20 pt-12 border-t border-slate-800">
           <div className="text-center max-w-2xl mx-auto mb-8">
-            <h3 className="text-2xl font-bold text-slate-900">
+            <h3 className="text-2xl font-bold text-white">
               Frequently Asked Questions
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -392,13 +392,13 @@ export const ContactSection: React.FC = () => {
               return (
                 <div
                   key={index}
-                  className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-2xs"
+                  className="border border-slate-800 rounded-xl overflow-hidden bg-slate-900 shadow-2xs"
                 >
                   <button
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                    className="w-full text-left px-5 py-4 flex items-center justify-between space-x-4 hover:bg-slate-50 transition-colors cursor-pointer"
+                    className="w-full text-left px-5 py-4 flex items-center justify-between space-x-4 hover:bg-slate-800/60 transition-colors cursor-pointer"
                   >
-                    <span className="text-xs sm:text-sm font-bold text-slate-900">
+                    <span className="text-xs sm:text-sm font-bold text-white">
                       {faq.question}
                     </span>
                     <span className="text-slate-400 shrink-0">
@@ -415,7 +415,7 @@ export const ContactSection: React.FC = () => {
                         transition={{ duration: 0.2 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 pb-4 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3 bg-slate-50/50">
+                        <div className="px-5 pb-4 text-xs text-slate-400 leading-relaxed border-t border-slate-800 pt-3 bg-slate-900/50">
                           {faq.answer}
                         </div>
                       </motion.div>

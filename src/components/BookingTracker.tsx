@@ -387,6 +387,57 @@ export const BookingTracker: React.FC<BookingTrackerProps> = ({
               </div>
 
             </div>
+
+            {/* Live Location Map */}
+            <div className="px-6 pb-6">
+              <div className="bg-slate-900/40 rounded-xl border border-slate-700/60 overflow-hidden">
+                <div className="p-4 pb-0 flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <MapPin className="w-3.5 h-3.5 text-teal-400" />
+                    <h4 className="font-bold text-slate-300 uppercase tracking-wider text-[11px]">
+                      {selectedBooking.status === 'in_transit'
+                        ? 'Technician En Route - Live Map'
+                        : 'Service Location Map'}
+                    </h4>
+                  </div>
+                  {selectedBooking.status === 'in_transit' && (
+                    <span className="text-[10px] font-bold text-teal-300 bg-teal-500/20 border border-teal-500/40 px-2 py-0.5 rounded-full animate-pulse">
+                      Live
+                    </span>
+                  )}
+                </div>
+                <div className="mt-3 h-52 sm:h-64 w-full">
+                  <iframe
+                    title={`Map for booking ${selectedBooking.id} service address`}
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                      `${selectedBooking.address}, ${selectedBooking.pincode}`
+                    )}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+                <div className="p-3 flex items-center justify-between text-[11px] text-slate-400">
+                  <span className="flex items-center space-x-1.5">
+                    <MapPin className="w-3 h-3 text-teal-400 shrink-0" />
+                    <span>{selectedBooking.address}, {selectedBooking.pincode}</span>
+                  </span>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      `${selectedBooking.address}, ${selectedBooking.pincode}`
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-semibold text-teal-400 hover:underline shrink-0 ml-3"
+                  >
+                    Open in Maps →
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </motion.div>
         ) : (
           <motion.div 

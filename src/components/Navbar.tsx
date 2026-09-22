@@ -46,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
+    <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-xs">
       {/* Top emergency & trust bar */}
       <div className="bg-slate-900 text-slate-100 text-xs py-2 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
@@ -74,7 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <PhoneCall className="w-3.5 h-3.5 mr-1 text-teal-400" />
               <span>Helpline: +91 98765 00123</span>
             </a>
-            <span className="text-slate-600">|</span>
+            <span className="text-slate-400">|</span>
             <a 
               href="https://wa.me/919876500123?text=Hello%20CoolClean%2C%20I%20need%20repair%20service%20for%20my%20appliance" 
               target="_blank" 
@@ -105,8 +105,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div>
               <div className="flex items-center space-x-1.5">
-                <span className="font-bold text-lg text-slate-900 tracking-tight">COOL&CLEAN</span>
-                <span className="text-xs font-semibold px-1.5 py-0.5 rounded-sm bg-teal-50 text-teal-700 border border-teal-200">
+                <span className="font-bold text-lg text-white tracking-tight">COOL&CLEAN</span>
+                <span className="text-xs font-semibold px-1.5 py-0.5 rounded-sm bg-teal-900/40 text-teal-300 border border-teal-800">
                   REPAIR HUB
                 </span>
               </div>
@@ -122,8 +122,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleNavClick(link.id)}
                 className={`text-sm font-medium transition-colors cursor-pointer py-1 border-b-2 ${
                   activeSection === link.id
-                    ? 'text-teal-600 border-teal-600 font-semibold'
-                    : 'text-slate-600 border-transparent hover:text-teal-600 hover:border-teal-200'
+                    ? 'text-teal-400 border-teal-600 font-semibold'
+                    : 'text-slate-400 border-transparent hover:text-teal-400 hover:border-teal-800'
                 }`}
               >
                 {link.label}
@@ -136,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenTracker}
               id="nav-track-btn"
-              className="inline-flex items-center px-3.5 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
+              className="inline-flex items-center px-3.5 py-2 text-xs font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors cursor-pointer"
             >
               <Search className="w-3.5 h-3.5 mr-1.5 text-slate-500" />
               <span>Track Booking</span>
@@ -167,7 +167,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-hidden"
+              className="p-2 rounded-lg text-slate-400 hover:bg-slate-800 focus:outline-hidden"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -184,7 +184,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 shadow-lg overflow-hidden"
+            className="lg:hidden border-t border-slate-800 bg-slate-900 px-4 pt-3 pb-6 space-y-3 shadow-lg overflow-hidden"
           >
             <div className="grid grid-cols-2 gap-2 pb-2">
               <button
@@ -202,28 +202,28 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onOpenTracker();
                   setMobileMenuOpen(false);
                 }}
-                className="flex items-center justify-center space-x-2 py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold rounded-lg transition-colors cursor-pointer"
+                className="flex items-center justify-center space-x-2 py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg transition-colors cursor-pointer"
               >
                 <Search className="w-4 h-4 text-slate-500" />
                 <span>Track ({myBookingsCount})</span>
               </button>
             </div>
 
-            <div className="space-y-1 border-t border-slate-100 pt-2">
+            <div className="space-y-1 border-t border-slate-800 pt-2">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
-                  className="block w-full text-left py-2.5 px-3 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-600 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2.5 px-3 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800/60 hover:text-teal-400 transition-colors cursor-pointer"
                 >
                   {link.label}
                 </button>
               ))}
             </div>
 
-            <div className="pt-3 border-t border-slate-100 text-xs text-slate-600 space-y-1.5">
+            <div className="pt-3 border-t border-slate-800 text-xs text-slate-400 space-y-1.5">
               <div className="flex items-center space-x-2 font-medium">
-                <PhoneCall className="w-4 h-4 text-teal-600" />
+                <PhoneCall className="w-4 h-4 text-teal-400" />
                 <span>Direct Hotline: +91 98765 00123</span>
               </div>
               <div className="flex items-center space-x-2 text-slate-500">
