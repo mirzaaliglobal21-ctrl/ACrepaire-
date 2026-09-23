@@ -1,0 +1,6 @@
+{
+  "name": "AC & Washing Machine Service & Repair",
+  "description": "Expert repair, servicing, installation, and maintenance for Air Conditioners and Washing Machines with instant online booking and contact assistance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
