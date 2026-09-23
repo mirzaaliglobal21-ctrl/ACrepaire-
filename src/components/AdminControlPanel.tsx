@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import {
-  Lock, MapPin, MessageSquare, DollarSign, X, LogOut,
+  Lock, MapPin, MessageSquare, X, LogOut,
   CheckCircle2, Eye, EyeOff, Shield, Wrench, Plus, Pencil, Trash2,
   ArrowLeft, RotateCcw
 } from 'lucide-react';
 import { getMapAddress, setMapAddress } from '../utils/mapSettings';
 import { getWhatsAppNumber, setWhatsAppNumber, formatDisplayNumber } from '../utils/contactSettings';
-import { getCurrency, setCurrency, CurrencyCode } from '../utils/currencySettings';
 import {
   getServices, addService, updateService, deleteService,
   isBuiltInService, resetServices
@@ -17,7 +16,7 @@ import { ApplianceType, ServiceItem } from '../types';
 // everyone else just sees the site, with no edit controls at all.
 const ADMIN_PASSWORD = '444123';
 
-type Tab = 'location' | 'whatsapp' | 'currency' | 'services';
+type Tab = 'location' | 'whatsapp' | 'services';
 
 // Blank template for the "add new service" form.
 const emptyServiceForm = {
@@ -45,7 +44,6 @@ export const AdminControlPanel: React.FC = () => {
 
   const [addressInput, setAddressInput] = useState(getMapAddress());
   const [numberInput, setNumberInput] = useState(formatDisplayNumber(getWhatsAppNumber()));
-  const [currencyInput, setCurrencyInput] = useState<CurrencyCode>(getCurrency());
 
   // Services tab state
   const [services, setServices] = useState<ServiceItem[]>(getServices());
@@ -62,7 +60,6 @@ export const AdminControlPanel: React.FC = () => {
     setSaved('');
     setAddressInput(getMapAddress());
     setNumberInput(formatDisplayNumber(getWhatsAppNumber()));
-    setCurrencyInput(getCurrency());
     refreshServices();
     setServiceView('list');
   };
@@ -118,16 +115,9 @@ export const AdminControlPanel: React.FC = () => {
     flashSaved('WhatsApp / call number updated everywhere on the site.');
   };
 
-  const handleSaveCurrency = (value: CurrencyCode) => {
-    setCurrencyInput(value);
-    setCurrency(value);
-    flashSaved(value === 'AED' ? 'Prices now show in Dirham (AED).' : 'Prices now show in Rupees (₹).');
-  };
-
   const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
     { id: 'location', label: 'Map', icon: <MapPin className="w-3.5 h-3.5" /> },
     { id: 'whatsapp', label: 'WhatsApp', icon: <MessageSquare className="w-3.5 h-3.5" /> },
-    { id: 'currency', label: 'Currency', icon: <DollarSign className="w-3.5 h-3.5" /> },
     { id: 'services', label: 'Services', icon: <Wrench className="w-3.5 h-3.5" /> }
   ];
 
@@ -219,9 +209,10 @@ export const AdminControlPanel: React.FC = () => {
         type="button"
         onClick={openPanel}
         title="Admin"
-        className="fixed bottom-5 left-5 z-40 w-10 h-10 flex items-center justify-center rounded-full bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-400 hover:text-teal-400 shadow-lg backdrop-blur-md transition-colors cursor-pointer"
+        className="fixed bottom-5 left-5 z-40 flex items-center space-x-1.5 h-10 px-3.5 rounded-full bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-teal-400 shadow-lg backdrop-blur-md transition-colors cursor-pointer"
       >
         <Lock className="w-4 h-4" />
+        <span className="text-xs font-bold tracking-wide">Admin</span>
       </button>
 
       {isOpen && (
@@ -244,7 +235,7 @@ export const AdminControlPanel: React.FC = () => {
                   <h3 className="font-bold text-slate-900 text-lg">Admin Login</h3>
                 </div>
                 <p className="text-xs text-slate-500 mb-4">
-                  Enter the admin password to control the site's map, WhatsApp number, pricing currency and services.
+                  Enter the admin password to control the site's map, WhatsApp number and services.
                 </p>
 
                 <form onSubmit={handleLogin} className="space-y-3">
@@ -294,7 +285,7 @@ export const AdminControlPanel: React.FC = () => {
                 </div>
 
                 {/* Tabs */}
-                <div className="grid grid-cols-4 gap-1.5 p-1 bg-slate-100 rounded-xl mb-4">
+                <div className="grid grid-cols-3 gap-1.5 p-1 bg-slate-100 rounded-xl mb-4">
                   {tabs.map((tab) => (
                     <button
                       key={tab.id}
@@ -368,41 +359,6 @@ export const AdminControlPanel: React.FC = () => {
                       Save Number
                     </button>
                   </form>
-                )}
-
-                {activeTab === 'currency' && (
-                  <div className="space-y-3">
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Prices shown to customers
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <button
-                        type="button"
-                        onClick={() => handleSaveCurrency('INR')}
-                        className={`py-3 rounded-xl text-sm font-bold border transition-all cursor-pointer ${
-                          currencyInput === 'INR'
-                            ? 'bg-teal-600 text-white border-teal-600 shadow-md'
-                            : 'bg-slate-50 text-slate-600 border-slate-200 hover:border-teal-300'
-                        }`}
-                      >
-                        ₹ Rupees (INR)
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => handleSaveCurrency('AED')}
-                        className={`py-3 rounded-xl text-sm font-bold border transition-all cursor-pointer ${
-                          currencyInput === 'AED'
-                            ? 'bg-teal-600 text-white border-teal-600 shadow-md'
-                            : 'bg-slate-50 text-slate-600 border-slate-200 hover:border-teal-300'
-                        }`}
-                      >
-                        Dhs Dirham (AED)
-                      </button>
-                    </div>
-                    <p className="text-[11px] text-slate-400">
-                      Switches every price shown on the site — services, estimates, bookings and receipts.
-                    </p>
-                  </div>
                 )}
 
                 {activeTab === 'services' && serviceView === 'list' && (
