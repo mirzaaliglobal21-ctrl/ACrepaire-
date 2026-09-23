@@ -16,9 +16,13 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ApplianceType, Booking, ServiceItem } from './types';
 import { getStoredBookings } from './utils/bookingStorage';
+import { useContactNumber } from './hooks/useContactNumber';
+import { buildWhatsAppUrl } from './utils/contactSettings';
+import { AdminControlPanel } from './components/AdminControlPanel';
 import { Phone, MessageSquare, CalendarCheck, Search } from 'lucide-react';
 
 export default function App() {
+  const contactNumber = useContactNumber();
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [activeSection, setActiveSection] = useState<string>('hero');
 
@@ -162,7 +166,7 @@ export default function App() {
       {/* Floating Action Quick Access (Mobile & Desktop) */}
       <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end space-y-2.5">
         <a
-          href="https://wa.me/919876500123?text=Hello%20CoolClean%2C%20I%20need%20repair%20service%20for%20my%20AC%20or%20Washing%20Machine"
+          href={buildWhatsAppUrl(contactNumber, 'Hello CoolClean, I need repair service for my AC or Washing Machine')}
           target="_blank"
           rel="noreferrer"
           className="flex items-center space-x-2 px-3.5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-full shadow-lg transition-transform hover:scale-105"
@@ -181,6 +185,9 @@ export default function App() {
           <span>Book Repair</span>
         </button>
       </div>
+
+      {/* Admin Control Panel (password gated) */}
+      <AdminControlPanel />
     </div>
   );
 }

@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { ServiceItem, ApplianceType } from '../types';
 import { SERVICES } from '../data/servicesData';
+import { useCurrency } from '../hooks/useCurrency';
 
 interface ServiceCatalogProps {
   onSelectServiceToBook: (service: ServiceItem) => void;
@@ -30,6 +31,7 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
   onSelectServiceToBook,
   initialApplianceFilter = 'all'
 }) => {
+  const { formatPrice } = useCurrency();
   const [applianceFilter, setApplianceFilter] = useState<ApplianceType | 'all'>(initialApplianceFilter);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [detailModalService, setDetailModalService] = useState<ServiceItem | null>(null);
@@ -239,7 +241,7 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <span className="text-[10px] text-slate-400 block font-medium">Starting from</span>
-                      <span className="text-xl font-extrabold text-white">₹{service.startingPrice}</span>
+                      <span className="text-xl font-extrabold text-white">{formatPrice(service.startingPrice)}</span>
                     </div>
 
                     <div className="flex items-center space-x-2">
@@ -346,7 +348,7 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({
                 <div className="flex items-center justify-between pt-2 border-t border-slate-800">
                   <div>
                     <span className="text-xs text-slate-400 block font-medium">Standard Price</span>
-                    <span className="text-2xl font-black text-white">₹{detailModalService.startingPrice}</span>
+                    <span className="text-2xl font-black text-white">{formatPrice(detailModalService.startingPrice)}</span>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.02 }}

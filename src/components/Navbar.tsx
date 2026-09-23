@@ -13,6 +13,8 @@ import {
   MessageSquare,
   Wrench
 } from 'lucide-react';
+import { useContactNumber } from '../hooks/useContactNumber';
+import { buildTelUrl, buildWhatsAppUrl, formatDisplayNumber } from '../utils/contactSettings';
 
 interface NavbarProps {
   onOpenBooking: () => void;
@@ -30,6 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenTracker
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const contactNumber = useContactNumber();
 
   const navLinks = [
     { label: 'Services', id: 'services' },
@@ -67,16 +70,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <div className="flex items-center space-x-3 ml-auto text-xs">
             <a 
-              href="tel:+919876500123" 
+              href={buildTelUrl(contactNumber)} 
               className="flex items-center font-semibold text-white hover:text-teal-300 transition-colors"
               title="Call Helpline"
             >
               <PhoneCall className="w-3.5 h-3.5 mr-1 text-teal-400" />
-              <span>Helpline: +91 98765 00123</span>
+              <span>Helpline: {formatDisplayNumber(contactNumber)}</span>
             </a>
             <span className="text-slate-400">|</span>
             <a 
-              href="https://wa.me/919876500123?text=Hello%20CoolClean%2C%20I%20need%20repair%20service%20for%20my%20appliance" 
+              href={buildWhatsAppUrl(contactNumber, 'Hello CoolClean, I need repair service for my appliance')} 
               target="_blank" 
               rel="noreferrer"
               className="inline-flex items-center font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
@@ -224,7 +227,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="pt-3 border-t border-slate-800 text-xs text-slate-400 space-y-1.5">
               <div className="flex items-center space-x-2 font-medium">
                 <PhoneCall className="w-4 h-4 text-teal-400" />
-                <span>Direct Hotline: +91 98765 00123</span>
+                <span>Direct Hotline: {formatDisplayNumber(contactNumber)}</span>
               </div>
               <div className="flex items-center space-x-2 text-slate-500">
                 <Clock className="w-4 h-4 text-slate-400" />

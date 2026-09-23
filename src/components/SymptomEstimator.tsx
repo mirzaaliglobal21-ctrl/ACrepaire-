@@ -13,12 +13,14 @@ import {
 } from 'lucide-react';
 import { ApplianceType, SymptomGuide } from '../types';
 import { SYMPTOM_GUIDES, SERVICES } from '../data/servicesData';
+import { useCurrency } from '../hooks/useCurrency';
 
 interface SymptomEstimatorProps {
   onBookRecommended: (appliance: ApplianceType, serviceId: string, symptomTitle: string) => void;
 }
 
 export const SymptomEstimator: React.FC<SymptomEstimatorProps> = ({ onBookRecommended }) => {
+  const { convertPriceText } = useCurrency();
   const [activeAppliance, setActiveAppliance] = useState<ApplianceType>('ac');
   const [selectedSymptomId, setSelectedSymptomId] = useState<string>(
     SYMPTOM_GUIDES.find(s => s.appliance === 'ac')?.id || ''
@@ -192,7 +194,7 @@ export const SymptomEstimator: React.FC<SymptomEstimatorProps> = ({ onBookRecomm
                     </div>
                     <div className="text-right shrink-0">
                       <span className="text-[10px] text-slate-400 block font-medium">Estimated Cost</span>
-                      <span className="text-lg font-bold text-teal-300">{selectedGuide.estimatedCostRange}</span>
+                      <span className="text-lg font-bold text-teal-300">{convertPriceText(selectedGuide.estimatedCostRange)}</span>
                     </div>
                   </div>
 

@@ -16,9 +16,11 @@ import {
 } from 'lucide-react';
 import { REVIEWS } from '../data/servicesData';
 import { ApplianceType } from '../types';
+import { useCurrency } from '../hooks/useCurrency';
 import genuinePartsImg from '../assets/images/genuine_appliance_parts_1790082058274.jpg';
 
 export const ReviewsAndTrust: React.FC = () => {
+  const { convertPriceText } = useCurrency();
   const [filterAppliance, setFilterAppliance] = useState<ApplianceType | 'all'>('all');
 
   const filteredReviews = REVIEWS.filter(
@@ -264,7 +266,7 @@ export const ReviewsAndTrust: React.FC = () => {
                     </div>
 
                     <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                      &ldquo;{rev.comment}&rdquo;
+                      &ldquo;{convertPriceText(rev.comment)}&rdquo;
                     </p>
                   </div>
 

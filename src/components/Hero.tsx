@@ -15,6 +15,11 @@ import {
   Navigation
 } from 'lucide-react';
 import { ApplianceType } from '../types';
+import { useMapAddress } from '../hooks/useMapAddress';
+import { buildMapEmbedUrl, buildDirectionsUrl } from '../utils/mapSettings';
+import { useContactNumber } from '../hooks/useContactNumber';
+import { buildTelUrl, formatDisplayNumber } from '../utils/contactSettings';
+import { useCurrency } from '../hooks/useCurrency';
 import heroTechnicianImg from '../assets/images/ac_technician_hero_1790081996299.jpg';
 import topBannerBgImg from '../assets/images/top_banner_bg_visible_1790082616249.jpg';
 
@@ -24,6 +29,9 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
+  const mapAddress = useMapAddress();
+  const contactNumber = useContactNumber();
+  const { formatPrice } = useCurrency();
   return (
     <section id="hero" className="relative pt-8 pb-16 overflow-hidden min-h-[640px] flex items-center">
       {/* AI Generated Top Banner Background - Fully Visible & Vibrant */}
@@ -140,7 +148,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
               >
                 <Zap className="w-5 h-5 text-teal-400 shrink-0" />
                 <div>
-                  <div className="text-xs font-bold text-white">₹0 Fee</div>
+                  <div className="text-xs font-bold text-white">{formatPrice(0)} Fee</div>
                   <div className="text-[11px] text-slate-300">If Repaired</div>
                 </div>
               </motion.div>
@@ -224,7 +232,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
                   <MapPin className="w-4 h-4 text-teal-600 shrink-0" />
                   <div>
                     <h3 className="font-bold text-slate-900 text-lg">Find Us on the Map</h3>
-                    <p className="text-xs text-slate-500">Visit our doorstep service hub</p>
+                    <p className="text-xs text-slate-500">{mapAddress}</p>
                   </div>
                 </div>
                 <span className="inline-flex items-center px-2 py-1 rounded-md text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
@@ -235,7 +243,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
               <div className="h-64 sm:h-72 w-full">
                 <iframe
                   title="CoolClean Repair Hub - Service Center Location"
-                  src="https://maps.google.com/maps?q=Central%20Electronics%20%26%20Appliance%20Market%2C%20Sector%2018%2C%20Near%20Metro%20Pillar%20421&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  src={buildMapEmbedUrl(mapAddress)}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -257,7 +265,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
                 </div>
 
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Central+Electronics+%26+Appliance+Market%2C+Sector+18%2C+Near+Metro+Pillar+421"
+                  href={buildDirectionsUrl(mapAddress)}
                   target="_blank"
                   rel="noreferrer"
                   className="w-full py-3 px-4 bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm rounded-xl shadow-md shadow-teal-600/20 hover:shadow-lg transition-all flex items-center justify-center space-x-2 cursor-pointer"
@@ -271,8 +279,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
               <div className="pb-4 text-center">
                 <span className="text-[11px] text-slate-500">
                   ⚡ Urgent breakdown? Call emergency line:{' '}
-                  <a href="tel:+919876500123" className="font-semibold text-teal-700 hover:underline">
-                    +91 98765 00123
+                  <a href={buildTelUrl(contactNumber)} className="font-semibold text-teal-700 hover:underline">
+                    {formatDisplayNumber(contactNumber)}
                   </a>
                 </span>
               </div>

@@ -14,6 +14,7 @@ import {
   Clock
 } from 'lucide-react';
 import { Booking } from '../types';
+import { useCurrency } from '../hooks/useCurrency';
 
 interface BookingSuccessModalProps {
   booking: Booking | null;
@@ -26,6 +27,7 @@ export const BookingSuccessModal: React.FC<BookingSuccessModalProps> = ({
   onClose,
   onOpenTrackerForBooking
 }) => {
+  const { formatPrice } = useCurrency();
   const handlePrint = () => {
     window.print();
   };
@@ -144,7 +146,7 @@ export const BookingSuccessModal: React.FC<BookingSuccessModalProps> = ({
 
             <div className="flex items-center justify-between pt-2 border-t border-slate-100 font-bold text-sm">
               <span className="text-slate-700">Payable Amount:</span>
-              <span className="text-teal-700">₹{booking.estimatedPrice}</span>
+              <span className="text-teal-700">{formatPrice(booking.estimatedPrice)}</span>
             </div>
 
             <div className="text-[11px] text-slate-500 text-right">

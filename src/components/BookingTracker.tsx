@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { Booking, BookingStatus } from '../types';
 import { updateBookingStatus } from '../utils/bookingStorage';
+import { useCurrency } from '../hooks/useCurrency';
 
 interface BookingTrackerProps {
   bookings: Booking[];
@@ -33,6 +34,7 @@ export const BookingTracker: React.FC<BookingTrackerProps> = ({
   initialSearchId,
   onClose
 }) => {
+  const { formatPrice } = useCurrency();
   const [searchInput, setSearchInput] = useState<string>(initialSearchId || '');
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(
     bookings.find(b => b.id === initialSearchId) || bookings[0] || null
@@ -376,7 +378,7 @@ export const BookingTracker: React.FC<BookingTrackerProps> = ({
                   </div>
                   <div className="flex justify-between text-white font-bold text-sm pt-1 border-t border-slate-700">
                     <span>Total Bill:</span>
-                    <span className="text-teal-400">₹{selectedBooking.estimatedPrice}</span>
+                    <span className="text-teal-400">{formatPrice(selectedBooking.estimatedPrice)}</span>
                   </div>
 
                   <div className="pt-2 flex items-center space-x-1.5 text-emerald-400 text-[11px]">

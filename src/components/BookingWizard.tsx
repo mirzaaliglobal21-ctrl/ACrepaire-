@@ -23,6 +23,7 @@ import {
 import { ApplianceType, Booking, ServiceItem } from '../types';
 import { BRANDS, APPLIANCE_SUBTYPES, TIME_SLOTS, SERVICES } from '../data/servicesData';
 import { generateBookingId, saveBooking } from '../utils/bookingStorage';
+import { useCurrency } from '../hooks/useCurrency';
 
 interface BookingWizardProps {
   isOpen: boolean;
@@ -43,6 +44,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
   preselectedBrand,
   preselectedSymptom
 }) => {
+  const { formatPrice } = useCurrency();
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1);
   
   // Step 1: Appliance & Service State
@@ -439,7 +441,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
                       </div>
                     </div>
                     <div className="text-right shrink-0">
-                      <span className="text-xs font-bold text-teal-700">₹{srv.startingPrice}</span>
+                      <span className="text-xs font-bold text-teal-700">{formatPrice(srv.startingPrice)}</span>
                       <span className="text-[10px] text-slate-400 block font-normal">base price</span>
                     </div>
                   </label>
@@ -517,7 +519,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
                     Express 45-Minute Emergency Dispatch
                   </div>
                   <div className="text-[11px] text-slate-500">
-                    Immediate nearest technician assignment (+₹150 priority fee)
+                    Immediate nearest technician assignment (+{formatPrice(150)} priority fee)
                   </div>
                 </div>
               </div>
@@ -720,13 +722,13 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
             <div className="bg-white rounded-xl p-4 border border-slate-200 space-y-2 text-xs">
               <div className="flex justify-between text-slate-600">
                 <span>Base Service Charge:</span>
-                <span>₹{basePrice}</span>
+                <span>{formatPrice(basePrice)}</span>
               </div>
 
               {isEmergency && (
                 <div className="flex justify-between text-amber-700">
                   <span>Priority Emergency Dispatch Fee:</span>
-                  <span>+₹{emergencySurcharge}</span>
+                  <span>+{formatPrice(emergencySurcharge)}</span>
                 </div>
               )}
 
@@ -736,7 +738,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
                     <Tag className="w-3 h-3 mr-1" />
                     Coupon Discount (COOL100):
                   </span>
-                  <span>-₹{discountAmount}</span>
+                  <span>-{formatPrice(discountAmount)}</span>
                 </div>
               )}
 
@@ -747,7 +749,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
 
               <div className="border-t border-slate-200 pt-2 flex justify-between items-center text-sm font-bold text-slate-900">
                 <span>Total Estimated Cost:</span>
-                <span className="text-lg text-teal-700">₹{finalPrice}</span>
+                <span className="text-lg text-teal-700">{formatPrice(finalPrice)}</span>
               </div>
             </div>
 

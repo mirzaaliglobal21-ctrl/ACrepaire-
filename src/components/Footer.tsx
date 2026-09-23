@@ -10,6 +10,9 @@ import {
   Clock
 } from 'lucide-react';
 import { ApplianceType } from '../types';
+import { useContactNumber } from '../hooks/useContactNumber';
+import { useCurrency } from '../hooks/useCurrency';
+import { buildTelUrl, formatDisplayNumber } from '../utils/contactSettings';
 
 interface FooterProps {
   onSelectApplianceService: (appliance: ApplianceType) => void;
@@ -17,6 +20,8 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onSelectApplianceService, onOpenBooking }) => {
+  const contactNumber = useContactNumber();
+  const { convertPriceText } = useCurrency();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -50,8 +55,8 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApplianceService, onOpen
             <div className="space-y-2 pt-1 text-slate-300">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-teal-400 shrink-0" />
-                <a href="tel:+919876500123" className="hover:text-white transition-colors">
-                  Helpline: +91 98765 00123 / 1800-419-COOL
+                <a href={buildTelUrl(contactNumber)} className="hover:text-white transition-colors">
+                  Helpline: {formatDisplayNumber(contactNumber)} / 1800-419-COOL
                 </a>
               </div>
               <div className="flex items-center space-x-2">
@@ -76,7 +81,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApplianceService, onOpen
                   onClick={() => onSelectApplianceService('ac')}
                   className="hover:text-teal-400 transition-colors text-left"
                 >
-                  Deep Foam Jet Wash (₹599)
+                  Deep Foam Jet Wash ({convertPriceText('₹599')})
                 </button>
               </li>
               <li>

@@ -16,8 +16,16 @@ import {
 } from 'lucide-react';
 import { ApplianceType } from '../types';
 import { FAQS } from '../data/servicesData';
+import { useMapAddress } from '../hooks/useMapAddress';
+import { buildMapEmbedUrl, buildDirectionsUrl } from '../utils/mapSettings';
+import { useContactNumber } from '../hooks/useContactNumber';
+import { buildTelUrl, buildWhatsAppUrl, formatDisplayNumber } from '../utils/contactSettings';
+import { useCurrency } from '../hooks/useCurrency';
 
 export const ContactSection: React.FC = () => {
+  const mapAddress = useMapAddress();
+  const contactNumber = useContactNumber();
+  const { convertPriceText } = useCurrency();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -98,7 +106,7 @@ export const ContactSection: React.FC = () => {
 
               <div className="space-y-3">
                 <a
-                  href="tel:+919876500123"
+                  href={buildTelUrl(contactNumber)}
                   className="flex items-center space-x-3 p-3 bg-slate-800/80 hover:bg-slate-700/80 rounded-xl border border-slate-700 transition-colors"
                 >
                   <div className="w-9 h-9 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center shrink-0">
@@ -106,12 +114,12 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <div>
                     <div className="text-[11px] text-slate-400">Direct Technician Hotline</div>
-                    <div className="text-sm font-bold text-white">+91 98765 00123</div>
+                    <div className="text-sm font-bold text-white">{formatDisplayNumber(contactNumber)}</div>
                   </div>
                 </a>
 
                 <a
-                  href="https://wa.me/919876500123?text=Hello%20CoolClean%2C%20I%20need%20urgent%20service"
+                  href={buildWhatsAppUrl(contactNumber, 'Hello CoolClean, I need urgent service')}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center space-x-3 p-3 bg-emerald-950/40 hover:bg-emerald-900/40 rounded-xl border border-emerald-700/40 transition-colors text-emerald-300"
@@ -175,10 +183,13 @@ export const ContactSection: React.FC = () => {
                 <MapPin className="w-4 h-4 text-teal-400 shrink-0" />
                 <span className="font-bold text-slate-100">Find Us on the Map</span>
               </div>
+              <div className="px-4 pt-1">
+                <span className="text-[11px] text-slate-400">{mapAddress}</span>
+              </div>
               <div className="mt-3 h-56 sm:h-64 w-full">
                 <iframe
                   title="CoolClean Repair Hub - Service Center Location"
-                  src="https://maps.google.com/maps?q=Central%20Electronics%20%26%20Appliance%20Market%2C%20Sector%2018%2C%20Near%20Metro%20Pillar%20421&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  src={buildMapEmbedUrl(mapAddress)}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -189,7 +200,7 @@ export const ContactSection: React.FC = () => {
               </div>
               <div className="p-4 pt-3 flex justify-end">
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Central+Electronics+%26+Appliance+Market%2C+Sector+18%2C+Near+Metro+Pillar+421"
+                  href={buildDirectionsUrl(mapAddress)}
                   target="_blank"
                   rel="noreferrer"
                   className="text-[11px] font-semibold text-teal-300 hover:underline"
@@ -416,7 +427,7 @@ export const ContactSection: React.FC = () => {
                         className="overflow-hidden"
                       >
                         <div className="px-5 pb-4 text-xs text-slate-400 leading-relaxed border-t border-slate-800 pt-3 bg-slate-900/50">
-                          {faq.answer}
+                          {convertPriceText(faq.answer)}
                         </div>
                       </motion.div>
                     )}
